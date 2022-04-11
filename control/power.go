@@ -2,8 +2,8 @@ package control
 
 import "manage/common"
 func ShutDown(){
-	common.ExecCommand("poweroff")
+	common.ExecCommand("bash","-c","poweroff")
 }
 func Reboot(){
-	common.ExecCommand("reboot")
+	common.ExecCommand("bash","-c","reboot")
 }

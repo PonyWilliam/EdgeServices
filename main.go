@@ -39,8 +39,8 @@ func main(){
 	}
 	control := r.Group("/control")
 	{
-		control.GET("/poweroff")
-		control.GET("/reboot")
+		control.GET("/poweroff",handler.Shutdown)
+		control.GET("/reboot",handler.Reboot)
 	}
-	r.Run(":80")
+	r.Run(":81")
 }
