@@ -42,5 +42,6 @@ func main(){
 		control.GET("/poweroff",handler.Shutdown)
 		control.GET("/reboot",handler.Reboot)
 	}
-	r.Run(":81")
+	
+	r.Run(":80")
 }

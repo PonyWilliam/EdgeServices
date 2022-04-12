@@ -157,7 +157,7 @@ func GetTotal()AllInfo{
 }
 func updatenotimportant(){
     d, _ := disk.Usage("/")
-    allinfo.Disk = fmt.Sprintf("%v GB Free: %v GB Usage:%f%%", d.Total/1024/1024/1024, d.Free/1024/1024/1024, d.UsedPercent)
+    allinfo.Disk = fmt.Sprintf("总大小: %v GB 剩余大小: %v GB Usage:%.2f%%", d.Total/1024/1024/1024, d.Free/1024/1024/1024, d.UsedPercent)
 }
 func Update(){
     i := 60
