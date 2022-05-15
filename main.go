@@ -4,6 +4,7 @@ import (
 	"manage/handler"
 	"manage/status"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -26,6 +27,16 @@ func Cors() gin.HandlerFunc {
 	}
 }
 func main(){
+	// 1. 获取要绑定的端口，如果没有->默认5200
+	args := os.Args
+	var port string
+	if args == nil || len(args) < 2{
+		port = ":5200"
+	}else{
+		port = args[1]
+	}
+	// 2. 绑定到对应端口
+
 	go status.Update() //协程定时更新信息
 	r := gin.Default()
 	r.Use(Cors())
@@ -42,6 +53,5 @@ func main(){
 		control.GET("/poweroff",handler.Shutdown)
 		control.GET("/reboot",handler.Reboot)
 	}
-	
-	r.Run(":80")
+	r.Run(port)
 }
